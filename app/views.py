@@ -3,7 +3,7 @@ from django.shortcuts import render
 from app.forms import *
 # Create your views here.
 from django.http import HttpResponse
-from django.views.generic import TemplateView,FormView
+from django.views.generic import TemplateView,FormView,ListView
 
 #TemplateView
 class Template(TemplateView):
@@ -29,3 +29,11 @@ class StudentInsertForm(FormView):
     def form_valid(self, form) -> HttpResponse:
         form.save()
         return HttpResponse('Data Inserted Succesfully')
+
+
+#ListView
+
+class DisplayStudent(ListView):
+    model=Student
+    template_name='DisplayStudent.html'
+    context_object_name='stlist'
