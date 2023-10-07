@@ -3,8 +3,9 @@ from django.shortcuts import render
 from app.forms import *
 # Create your views here.
 from django.http import HttpResponse
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView,FormView
 
+#TemplateView
 class Template(TemplateView):
     template_name='Temp.html'
 
@@ -19,3 +20,12 @@ class Template(TemplateView):
         if SFDO.is_valid():
             SFDO.save()
             return HttpResponse('Data is Inserted')
+
+
+#FormView    
+class StudentInsertForm(FormView):
+    form_class=StudentForm
+    template_name='StudentInsertForm.html'
+    def form_valid(self, form) -> HttpResponse:
+        form.save()
+        return HttpResponse('Data Inserted Succesfully')

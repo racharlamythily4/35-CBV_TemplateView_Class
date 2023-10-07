@@ -22,4 +22,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('Template/',Template.as_view(),name='Template'),
     path('Temp_by_url/',TemplateView.as_view(template_name='Temp_by_url.html'),name='Temp_by_url'),
+    path('StudentInsertForm/',StudentInsertForm.as_view(),name='StudentInsertForm'),
 ]
